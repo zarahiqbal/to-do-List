@@ -10,6 +10,9 @@ function TaskTable({ tasks, setTasks}) {
     );
   };
   return (
+    <div>
+          <h2>Task Table</h2>
+
     <table className='table'>
       <thead>
         <tr>
@@ -39,6 +42,7 @@ function TaskTable({ tasks, setTasks}) {
         ))}
       </tbody>
     </table>
+    </div>
   );
 }
 export default TaskTable;

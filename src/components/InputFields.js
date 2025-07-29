@@ -23,6 +23,7 @@ function InputFields({tasks, setTasks}) {
 
   return(
     <div>
+      <h1>INPUT</h1>
             <input
               className='input'
               type="text"
