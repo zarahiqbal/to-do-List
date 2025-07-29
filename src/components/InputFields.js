@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useRef } from "react";
 function InputFields({tasks, setTasks}) {
-  const [inputValue, setInputValue] = useState('');
-  const [inputDate, setInputDate] = useState('');
+ 
+  const inputValueRef = useRef('');
+  const inputDateRef = useRef('');
   const addTask = () => {
+    const inputValue = inputValueRef.current.value;
+    const inputDate = inputDateRef.current.value;
     if (inputValue.trim() === '' || inputDate === '') {
       alert("Please enter task and date for the task.");
     } else {
@@ -13,24 +16,23 @@ function InputFields({tasks, setTasks}) {
         Date: inputDate,
       };        
       setTasks([...tasks, newTask]);
-      setInputValue(''); 
-    setInputDate('');
+    inputValueRef.current.value = '';
+    inputDateRef.current.value = '';
     }
   };
+
   return(
     <div>
             <input
               className='input'
               type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              ref={inputValueRef}
               placeholder="Enter a task"
             />
             <input
               className='input'
               type="date"
-              value={inputDate}
-              onChange={(id) => setInputDate(id.target.value)}
+              ref ={inputDateRef}
               placeholder="Select a date"   
               />
             <button className='button button-hover' onClick={addTask}>Add Task</button>
